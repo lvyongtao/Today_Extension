@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11129.15" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11103.10"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pzE-WK-GrC">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="4sT-bd-caZ"/>
+                                </constraints>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="asN-hD-3Y6">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="wVU-gS-QBV"/>
+                                </constraints>
+                            </slider>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="O3M-lO-XnQ">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YRW-jB-1pj"/>
+                                </constraints>
+                            </slider>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="asN-hD-3Y6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="5Ho-rP-Cef"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="O3M-lO-XnQ" secondAttribute="trailing" constant="30" id="A0b-Wc-BFm"/>
+                            <constraint firstItem="pzE-WK-GrC" firstAttribute="top" secondItem="O3M-lO-XnQ" secondAttribute="bottom" constant="36" id="Dt6-SV-1V1"/>
+                            <constraint firstItem="asN-hD-3Y6" firstAttribute="top" secondItem="pzE-WK-GrC" secondAttribute="bottom" constant="32" id="Oof-j6-lgb"/>
+                            <constraint firstItem="O3M-lO-XnQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="SKg-gO-FOH"/>
+                            <constraint firstItem="pzE-WK-GrC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="TAw-Rm-ieT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pzE-WK-GrC" secondAttribute="trailing" constant="30" id="g90-mB-yCI"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="asN-hD-3Y6" secondAttribute="bottom" constant="47" id="mTP-83-N1s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="asN-hD-3Y6" secondAttribute="trailing" constant="30" id="zjk-dh-KJO"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="blue" destination="asN-hD-3Y6" id="XV4-hJ-zV2"/>
+                        <outlet property="green" destination="pzE-WK-GrC" id="SUK-BJ-BBm"/>
+                        <outlet property="red" destination="O3M-lO-XnQ" id="j04-M6-TJO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
