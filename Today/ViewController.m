@@ -52,22 +52,23 @@
     NSMutableString *mutableDateStr = [NSMutableString stringWithString:dateStr];
     
     if ([[mutableDateStr substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"] ) {
-        [mutableDateStr deleteCharactersInRange:NSMakeRange(0, 1)];
+         [mutableDateStr replaceCharactersInRange:NSMakeRange(0, 1) withString:@""];
     }
     
     NSArray *mutablearr = [mutableDateStr componentsSeparatedByString:@"月"];
     if (mutablearr.count) {
         if ([[mutablearr[1] substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"]) {
-            [mutablearr[1] deleteCharactersInRange:NSMakeRange(0, 1)];
+            NSMutableString *mutableDayStr = [NSMutableString stringWithString:mutablearr[1]];
+            [mutableDayStr replaceCharactersInRange:NSMakeRange(0, 1) withString:@""];
+             mutableDateStr = [NSMutableString stringWithFormat:@"%@月%@",mutablearr[0],mutableDayStr];
         }
-        mutableDateStr = [NSMutableString stringWithFormat:@"%@月%@",mutablearr[0],mutablearr[1]];
-        
+       
     }
     dateStr = [mutableDateStr copy];
     dateStr = [dateStr stringByAppendingString:@"日"];
     dateStr = [dateStr stringByAppendingString:[self returnWeekDay]];
     
-//    NSLog(@"%@",[self setFontAndColorWithString1:dateStr withstring2:[self getChineseCalendarWithDate:[NSDate date]] withFont1:35 withFont2:18 withColor1:[UIColor blackColor] withColor2:[UIColor blackColor]]);
+    NSLog(@"%@",[self setFontAndColorWithString1:dateStr withstring2:[self getChineseCalendarWithDate:[NSDate date]] withFont1:35 withFont2:18 withColor1:[UIColor blackColor] withColor2:[UIColor blackColor]]);
     
 }
 - (NSString *)returnWeekDay
