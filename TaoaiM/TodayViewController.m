@@ -23,13 +23,27 @@
     NSDate *date=[NSDate date];
     NSDateFormatter *pickerFormatter=[[NSDateFormatter alloc] init];
     [pickerFormatter setDateFormat:@"MM-dd"];
-    NSString *dataStr=[pickerFormatter stringFromDate:date];
-    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"-" withString:@"月"];
-    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"0" withString:@""];
-    dataStr = [dataStr stringByAppendingString:@"日"];
-    dataStr = [dataStr stringByAppendingString:[self returnWeekDay]];
+    NSString *dateStr=[pickerFormatter stringFromDate:date];
+    dateStr = [dateStr stringByReplacingOccurrencesOfString:@"-" withString:@"月"];
+    NSMutableString *mutableDateStr = [NSMutableString stringWithString:dateStr];
     
-    _todayLable.attributedText = [self setFontAndColorWithString1:dataStr withstring2:[self getChineseCalendarWithDate:[NSDate date]] withFont1:35 withFont2:18 withColor1:[UIColor blackColor] withColor2:[UIColor blackColor]];
+    if ([[mutableDateStr substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"] ) {
+        [mutableDateStr deleteCharactersInRange:NSMakeRange(0, 1)];
+    }
+    
+    NSArray *mutablearr = [mutableDateStr componentsSeparatedByString:@"月"];
+    if (mutablearr.count) {
+        if ([[mutablearr[1] substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"]) {
+              [mutablearr[1] deleteCharactersInRange:NSMakeRange(0, 1)];
+        }
+        mutableDateStr = [NSMutableString stringWithFormat:@"%@月%@",mutablearr[0],mutablearr[1]];
+        
+    }
+    dateStr = [mutableDateStr copy];
+    dateStr = [dateStr stringByAppendingString:@"日"];
+    dateStr = [dateStr stringByAppendingString:[self returnWeekDay]];
+    
+    _todayLable.attributedText = [self setFontAndColorWithString1:dateStr withstring2:[self getChineseCalendarWithDate:[NSDate date]] withFont1:35 withFont2:18 withColor1:[UIColor blackColor] withColor2:[UIColor blackColor]];
     // Do any additional setup after loading the view from its nib.
 }
 

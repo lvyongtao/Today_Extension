@@ -34,15 +34,27 @@
                                     <constraint firstAttribute="height" constant="30" id="YRW-jB-1pj"/>
                                 </constraints>
                             </slider>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YS0-3I-13M">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="7cX-vv-a92"/>
+                                </constraints>
+                                <state key="normal" title="点击进入Safari"/>
+                                <connections>
+                                    <action selector="clicktosafari:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Lxr-Dj-Cde"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="asN-hD-3Y6" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="5Ho-rP-Cef"/>
                             <constraint firstAttribute="trailingMargin" secondItem="O3M-lO-XnQ" secondAttribute="trailing" constant="30" id="A0b-Wc-BFm"/>
+                            <constraint firstItem="YS0-3I-13M" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="18" id="B31-qq-8Yu"/>
                             <constraint firstItem="pzE-WK-GrC" firstAttribute="top" secondItem="O3M-lO-XnQ" secondAttribute="bottom" constant="36" id="Dt6-SV-1V1"/>
+                            <constraint firstItem="YS0-3I-13M" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="179" id="HB9-o8-Nrb"/>
                             <constraint firstItem="asN-hD-3Y6" firstAttribute="top" secondItem="pzE-WK-GrC" secondAttribute="bottom" constant="32" id="Oof-j6-lgb"/>
                             <constraint firstItem="O3M-lO-XnQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="SKg-gO-FOH"/>
                             <constraint firstItem="pzE-WK-GrC" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="30" id="TAw-Rm-ieT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YS0-3I-13M" secondAttribute="trailing" constant="224" id="ekN-vs-afG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pzE-WK-GrC" secondAttribute="trailing" constant="30" id="g90-mB-yCI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="asN-hD-3Y6" secondAttribute="bottom" constant="47" id="mTP-83-N1s"/>
                             <constraint firstAttribute="trailingMargin" secondItem="asN-hD-3Y6" secondAttribute="trailing" constant="30" id="zjk-dh-KJO"/>

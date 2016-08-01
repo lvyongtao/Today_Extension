@@ -16,6 +16,10 @@
 @end
 
 @implementation ViewController
+- (IBAction)clicktosafari:(UIButton *)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.baidu.com"]];
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,8 +37,79 @@
 //      NSLog(@"%@",[UIFont familyNames]);
   
     // Do any additional setup after loading the view, typically from a nib.
-  NSString *chineseDate =  [self getChineseCalendarWithDate:[NSDate date]];
+//    NSString *chineseDate =  [self getChineseCalendarWithDate:[NSDate date]];
+//    NSLog(@"%@",chineseDate);
+    
+    [self initToday];
 
+}
+- (void)initToday{
+    NSDate *date=[NSDate date];
+    NSDateFormatter *pickerFormatter=[[NSDateFormatter alloc] init];
+    [pickerFormatter setDateFormat:@"MM-dd"];
+    NSString *dateStr=[pickerFormatter stringFromDate:date];
+    dateStr = [dateStr stringByReplacingOccurrencesOfString:@"-" withString:@"月"];
+    NSMutableString *mutableDateStr = [NSMutableString stringWithString:dateStr];
+    
+    if ([[mutableDateStr substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"] ) {
+        [mutableDateStr deleteCharactersInRange:NSMakeRange(0, 1)];
+    }
+    
+    NSArray *mutablearr = [mutableDateStr componentsSeparatedByString:@"月"];
+    if (mutablearr.count) {
+        if ([[mutablearr[1] substringWithRange:NSMakeRange(0, 1)] isEqualToString:@"0"]) {
+            [mutablearr[1] deleteCharactersInRange:NSMakeRange(0, 1)];
+        }
+        mutableDateStr = [NSMutableString stringWithFormat:@"%@月%@",mutablearr[0],mutablearr[1]];
+        
+    }
+    dateStr = [mutableDateStr copy];
+    dateStr = [dateStr stringByAppendingString:@"日"];
+    dateStr = [dateStr stringByAppendingString:[self returnWeekDay]];
+    
+//    NSLog(@"%@",[self setFontAndColorWithString1:dateStr withstring2:[self getChineseCalendarWithDate:[NSDate date]] withFont1:35 withFont2:18 withColor1:[UIColor blackColor] withColor2:[UIColor blackColor]]);
+    
+}
+- (NSString *)returnWeekDay
+{
+    NSDate *todaydate=[NSDate date];
+    NSDateFormatter *pickerFormatter=[[NSDateFormatter alloc] init];
+    [pickerFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags =NSCalendarUnitYear | NSCalendarUnitMonth |NSCalendarUnitDay | NSCalendarUnitWeekday |
+    NSCalendarUnitHour |NSCalendarUnitMinute | NSCalendarUnitSecond;
+    comps = [calendar components:unitFlags fromDate:todaydate];
+    NSArray *weeks = [NSArray arrayWithObjects:@" 星期日",@" 星期一",@" 星期二",@" 星期三",@" 星期四",@" 星期五",@" 星期六", nil];
+    NSInteger week = [comps weekday];
+    NSString *weekDayStr;
+    switch (week) {
+        case 1:
+            weekDayStr =weeks[0];
+            break;
+        case 2:
+            weekDayStr =weeks[1];
+            break;
+        case 3:
+            weekDayStr =weeks[2];
+            break;
+        case 4:
+            weekDayStr =weeks[3];
+            break;
+        case 5:
+            weekDayStr =weeks[4];
+            break;
+        case 6:
+            weekDayStr =weeks[5];
+            break;
+        case 7:
+            weekDayStr =weeks[6];
+            break;
+        default:
+            weekDayStr = @"";
+            break;
+    }
+    return weekDayStr;
 }
 - (NSString*)getChineseCalendarWithDate:(NSDate *)date{
     
@@ -73,24 +148,25 @@
     
     return chineseCal_str;  
 }
+- (NSMutableAttributedString *)setFontAndColorWithString1:(NSString *)str1 withstring2:(NSString *)str2  withFont1:(float)size1 withFont2:(float)size2 withColor1:(UIColor *)color1 withColor2:(UIColor *)color2
+{
+    
+    NSString *sumStr = [NSString stringWithFormat:@"%@\n%@",str1,str2];
+    NSMutableAttributedString *attributedStr = [[NSMutableAttributedString alloc] initWithString:sumStr];
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:size1] range:NSMakeRange(0, str1.length)];
+    [attributedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:size2] range:NSMakeRange(str1.length + 1, str2.length)];
+    
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:color1 range:NSMakeRange(0, str1.length)];
+    [attributedStr addAttribute:NSForegroundColorAttributeName value:color2 range:NSMakeRange(str1.length + 1, str2.length )];
+    
+    
+    return attributedStr;
+    
+}
 - (void)updateValue:(UISlider *)slider{
 
     self.view.backgroundColor = [UIColor colorWithRed:_red.value green:_green.value blue:_blue.value alpha:1.000];
     
-    
-    
-    //    if (_red) {
-    //        NSLog(@"red=%.3f",_red.value);
-    //        return;
-    //    }
-    //    if (_green) {
-    //        NSLog(@"green=%.3f",_green.value);
-    //        return;
-    //    }
-    //    if (_blue) {
-    //        NSLog(@"blue=%.3f",_green.value);
-    //        return;
-    //    }
 }
 
 
