@@ -17,8 +17,8 @@
 
 @implementation ViewController
 - (IBAction)clicktosafari:(UIButton *)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.baidu.com"]];
-    
+   
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.baidu.com"]];
 }
 
 - (void)viewDidLoad {
